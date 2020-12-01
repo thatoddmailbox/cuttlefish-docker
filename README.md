@@ -23,10 +23,10 @@ HOME=$PWD ./bin/launch_cvd
 * Still need to figure out how to pass through hardware acceleration stuff
 * Path to aosp_cf_x86_phone-img is hardcoded to specific build ID
 * Requires manually running launch_cvd
-** This should be automated with the start of the container
+	* This should be automated with the start of the container
 * /dev/log from the host needs to be passed through to make crosvm happy; there should be a way around that
-** rsyslogd is installed in the container, but it seems to need some configuration or something
+	* rsyslogd is installed in the container, but it seems to need some configuration or something
 * The code in the container is run with uid 0 (aka root)
-** This should be fixable? Might need to change the usermod commands in the Dockerfile though.
+	* This should be fixable? Might need to change the usermod commands in the Dockerfile though.
 * Persistence doesn't really work yet
 
