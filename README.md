@@ -3,6 +3,12 @@ Run the Android [Cuttlefish virtual device](https://source.android.com/setup/cre
 
 Still very much a work-in-progress. (as in, it doesn't actually work yet)
 
+## Requirements
+* A Docker host that you have control over
+* On that host, working KVM (see [here](https://askubuntu.com/a/104024) for instruction on how to check that)
+	* note that this means your CPU needs to support some form of virtualization extensions
+	* this means you can't in a cloud VMs, unless your cloud provider supports nested virtualization (Azure and Google Cloud both claim to, although this hasn't been tested on either)
+
 ## Instructions
 Download aosp_cf_x86_phone-img-6999531.zip and cvd-host_package.tar.gz as described in the [official instructions](https://android.googlesource.com/device/google/cuttlefish/).
 
