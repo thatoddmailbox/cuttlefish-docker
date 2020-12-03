@@ -5,9 +5,9 @@ Still very much a work-in-progress. (as in, it doesn't actually work yet)
 
 ## Requirements
 * A Docker host that you have control over
-* On that host, working KVM (see [here](https://askubuntu.com/a/104024) for instruction on how to check that)
+* On that host, working KVM (see [here](https://askubuntu.com/a/104024) for instructions on how to check that)
 	* Note that this means your CPU needs to support some form of virtualization extensions
-	* This means you can't run this in cloud VMs, unless your cloud provider supports nested virtualization (Azure and Google Cloud both claim to, although this hasn't been tested on either)
+	* This means you can't run this in a cloud VM, unless your cloud provider supports nested virtualization (Azure and Google Cloud both claim to, although this hasn't been tested on either)
 
 ## Instructions
 Download aosp_cf_x86_phone-img-6999531.zip and cvd-host_package.tar.gz as described in the [official instructions](https://android.googlesource.com/device/google/cuttlefish/).
@@ -15,13 +15,13 @@ Download aosp_cf_x86_phone-img-6999531.zip and cvd-host_package.tar.gz as descri
 On the host:
 ```bash
 docker build --tag cuttlefish:latest .
-docker run -v /dev/log:/dev/log --device /dev/kvm --user=0 -it cuttlefish:latest
+docker run --network host --privileged -v /dev/log:/dev/log --device /dev/net/tun --device /dev/kvm --p 8444:8443 --user=0 -it cuttlefish:latest
 ```
 
 Then, in the container:
 ```bash
 cd cf
-HOME=$PWD ./bin/launch_cvd
+HOME=$PWD ./bin/launch_cvd -report_anonymous_usage_stats "y"
 ```
 
 ## Limitations
