@@ -34,5 +34,5 @@ HOME=$PWD ./bin/launch_cvd -report_anonymous_usage_stats "y"
 	* rsyslogd is installed in the container, but it seems to need some configuration or something
 * The code in the container is run with uid 0 (aka root)
 	* This should be fixable? Might need to change the usermod commands in the Dockerfile though.
-* Persistence doesn't really work yet
-
+* Data persistence doesn't really work yet
+	* Should be using a bind mount or volume to save the VM data
